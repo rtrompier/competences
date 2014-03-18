@@ -4,8 +4,8 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
  
-var server = new Server('localhost', 27017, {auto_reconnect: true,safe: false});
-db = new Db('competencedb', server);
+var server = new Server('localhost', 27017, {auto_reconnect: true,safe: false, strict: false});
+db = new Db('comp', server);
  
 db.open(function(err, db) {
     if(!err) {
@@ -93,11 +93,11 @@ var populateDB = function() {
     var competences = [
     {
         name: "Constuire et intégrer un template Joomla",
-        categorie: "Test"
+        categorie: "Test",
     },
     {
         name: "Référencer un site naturellement (netlinking)",
-        categorie: "Test"
+        categorie: "Test",
     }
     ];
  

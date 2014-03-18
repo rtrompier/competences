@@ -4,8 +4,8 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
  
-var server = new Server('localhost', 27017, {auto_reconnect: true,safe: false});
-db = new Db('situationdb', server);
+var server = new Server('localhost', 27017, {auto_reconnect: true,safe: false, strict: false});
+db = new Db('comp', server);
  
 db.open(function(err, db) {
     if(!err) {
@@ -92,8 +92,7 @@ var populateDB = function() {
  
     var situations = [
     {
-        name: "Constuire et intégrer un template Joomla",
-        competence_id: "",
+        competence_id : "",
         year: "2011",
         lieu: "entreprise",
         besoin_entreprise : "Répondre à la demande du client qui veut renouveller son image sur internet.",
@@ -114,12 +113,11 @@ var populateDB = function() {
                             "Configurer le site Joomla",
                             "Mettre en place le contenu"
                             ],
-        resultat: "D’après moi le reésultat est bon, le site sous Joomla correspond parfaitement à la maquette réalisée par le webdesigner.",
+        resultat: ["D’après moi le reésultat est bon, le site sous Joomla correspond parfaitement à la maquette réalisée par le webdesigner."],
         retour: "NC"
     },
     {
-        name: "Référencer un site naturellement (netlinking)",
-        competence_id: "",
+        competence_id : "",
         year: "2011",
         lieu: "entreprise",
         besoin_entreprise : "Répondre à la demande du client qui veut améliorer sa visibilité sur les moteurs de recherche.",
@@ -130,7 +128,7 @@ var populateDB = function() {
         chronologiquement:  [
                             "Inscrire le site dans les annuaires",
                             ],
-        resultat: "D’apreès moi le résultat est bon, le site du client a fortement amélioré son positionnement sur Google.",
+        resultat: ["D’apreès moi le résultat est bon, le site du client a fortement amélioré son positionnement sur Google."],
         retour: "NC"
     }
     ];
