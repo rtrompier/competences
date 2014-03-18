@@ -25,19 +25,30 @@ app.config(function ($routeProvider) {
 });
 
 app.controller('HomeCtrl', function ($scope, $http) {
-    var competences = ['lol', 'lil', 'lal'];
+    var competences = [];
     $scope.competences = competences;
     $http.get('http://192.168.0.93:3000/competences')
         .success(function (data) {
-            $scope.competences = data;
+            competences = data;
+            $scope.competences = competences;
         })
         .error(function () {
 
         });
 
-    $http.get('foo.json').then(function(result) {
-        return result.data;
-    });
+    $scope.proceedToConfiguration = function () {
+        console.log('On va exporter ---> ');
+        console.log(competences);
+        for (var i = 0; i < competences.length; i++) {
+            var competence = competences[i];
+            if (competence.isActive) {
+                console.log(competence.name);
+            } else {
+                console.log('on export pas ' + competence.name);
+            }
+        }
+    }
+
 });
 
 app.controller('ConfigureCtrl', function ($scope, $http) {
