@@ -27,7 +27,7 @@ app.config(function ($routeProvider) {
 app.controller('HomeCtrl', function ($scope, $http) {
     var competences = [];
     $scope.competences = competences;
-    $http.get('http://192.168.0.109:3000/competences')
+    $http.get('http://comp.xcid.fr/competences')
         .success(function (data) {
             competences = data;
             $scope.competences = competences;
