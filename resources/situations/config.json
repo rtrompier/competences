@@ -1,0 +1,77 @@
+{
+	"type": "Collection",
+	"properties": {
+		"competenceid": {
+			"name": "competenceid",
+			"type": "number",
+			"typeLabel": "number",
+			"required": true,
+			"id": "competenceid",
+			"order": 0
+		},
+		"year": {
+			"name": "year",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "year",
+			"order": 1
+		},
+		"lieu": {
+			"name": "lieu",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "lieu",
+			"order": 2
+		},
+		"besoinentreprise": {
+			"name": "besoinentreprise",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "besoinentreprise",
+			"order": 3
+		},
+		"travaildemande": {
+			"name": "travaildemande",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "travaildemande",
+			"order": 4
+		},
+		"contraintes": {
+			"name": "contraintes",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "contraintes",
+			"order": 5
+		},
+		"chronologiquement": {
+			"name": "chronologiquement",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "chronologiquement",
+			"order": 6
+		},
+		"resultat": {
+			"name": "resultat",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "resultat",
+			"order": 7
+		},
+		"retour": {
+			"name": "retour",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "retour",
+			"order": 8
+		}
+	}
+}

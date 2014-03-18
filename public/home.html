@@ -1,0 +1,33 @@
+<div class="container">
+
+    <pre>
+        {{ competences }}
+    </pre>
+
+    <div class="table-responsive">
+        <input type="text" ng-model="search" placeholder="Search"/>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Which one?</th>
+                <th>#</th>
+                <th>Name</th>
+                <th>Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="competence in competences | filter:search">
+                <td>
+                    <input type="checkbox" ng-model="competence.isActive" ng-click="competence.isActive = !competence.isActive"/>
+                </td>
+                <td>{{competence._id}}</td>
+                <td>{{competence.name}}</td>
+                <td>{{competence.year}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration()">Submit</button>
+
+</div>
