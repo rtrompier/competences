@@ -1,3 +1,13 @@
 {
-	"type": "UserCollection"
+	"type": "UserCollection",
+	"properties": {
+		"nbSituation": {
+			"name": "nbSituation",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "nbSituation",
+			"order": 0
+		}
+	}
 }

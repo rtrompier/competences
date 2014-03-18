@@ -3,8 +3,8 @@
 	"properties": {
 		"competenceid": {
 			"name": "competenceid",
-			"type": "number",
-			"typeLabel": "number",
+			"type": "string",
+			"typeLabel": "string",
 			"required": true,
 			"id": "competenceid",
 			"order": 0
