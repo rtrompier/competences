@@ -1,82 +1,92 @@
 <div class="container">
-
-    <div class="page">
-        <!--<div class="subpage">-->
-            <h1 class="text-center">Titre de la compétences</h1>
-            <table class="table table-bordered">
-                <tr>
-                    <td>
-                        <h3>Besoin de l'entreprise :</h3>
-                        <div class="contentTab">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem facilis itaque voluptatum accusantium laborum 
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Travail que globalement on m'as demandé :</h3>
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Moyens et contraintes :</h3>
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Chronologiquement j’ai dû :</h3>
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Résultat obtenu :</h3>
-                        <div class="contentTab">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem facilis itaque voluptatum accusantium laborum 
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Ce que les autres ont dit de mes résultats  :</h3>
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        <!--</div>-->
-    </div>
-    <div class="page">
-        <div class="subpage">Ici la page 2</div>    
-    </div>
+    <div ng-controller="ExportCtrl">
+        <div class="page first-page">
+            <div>
+                Nom Prénom<br>
+                01 mars 2014
+            </div>
+            <div class="title text-center">
+                PORTEFEUILLES DE COMPETENCES    
+            </div>
+        </div>
+        <div class="page" ng-repeat="a in [1,2,3,4,5]">
+            <!--<div class="subpage">-->
+                <div class="header">
+                    <img src="img/G4-logo.png" alt="G4 logo" class="logo">
+                </div>
+                <h1 class="text-center">Titre de la compétences {{$index + 1}}</h1>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <h3>Besoin de l'entreprise :</h3>
+                            <div class="contentTab">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem facilis itaque voluptatum accusantium laborum 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Travail que globalement on m'as demandé :</h3>
+                            <div class="contentList">
+                                <ul>
+                                    <li>list 1</li>
+                                    <li>list 2</li>
+                                    <li>list 3</li>
+                                    <li>list 4</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Moyens et contraintes :</h3>
+                            <div class="contentList">
+                                <ul>
+                                    <li>list 1</li>
+                                    <li>list 2</li>
+                                    <li>list 3</li>
+                                    <li>list 4</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Chronologiquement j’ai dû :</h3>
+                            <div class="contentList">
+                                <ul>
+                                    <li>list 1</li>
+                                    <li>list 2</li>
+                                    <li>list 3</li>
+                                    <li>list 4</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Résultat obtenu :</h3>
+                            <div class="contentTab">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem facilis itaque voluptatum accusantium laborum 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Ce que les autres ont dit de mes résultats  :</h3>
+                            <div class="contentList">
+                                <ul>
+                                    <li>list 1</li>
+                                    <li>list 2</li>
+                                    <li>list 3</li>
+                                    <li>list 4</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            <!--</div>-->
+        </div>  
+    </div> 
 
 </div>
