@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title>Deployd login form</title>
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -16,8 +18,9 @@
       <a href="/register.html" class="btn btn-link">sign up</a>
     </form>
   </div>
-  <script type="text/javascript" src="/js/lib/jquery.js"></script>
-  <script type="text/javascript" src="/dpd.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/lib/dpd.js"></script>
   <script type="text/javascript">
     dpd.users.me(function(user) {
       if (user) {
