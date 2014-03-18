@@ -1,0 +1,23 @@
+<div class="container">
+
+    <pre>
+        {{ competences }}
+    </pre>
+
+
+
+    <div ng-repeat="competence in competences">
+        <h2 class="text-info">{{competence.name}}</h2>
+
+        <ul>
+            <li>Lieu : {{competence.year}}</li>
+            <li>{{competence.year}}</li>
+        </ul>
+        <h3 class="text-info">Besoin de l'entreprise</h3>
+        <p>
+            {{competence.besoin_entreprise}}
+        </p>
+        <hr>
+    </div>
+
+</div>

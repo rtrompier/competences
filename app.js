@@ -10,6 +10,14 @@ app.config(function ($routeProvider) {
             templateUrl: 'home.html',
             controller: 'HomeCtrl'
         })
+        .when('/configure', {
+            templateUrl: 'configure.html',
+            controller: 'ConfigureCtrl'
+        })
+        .when('/export', {
+            templateUrl: 'export.html',
+            controller: 'ExportCtrl'
+        })
         .otherwise({
             templateUrl: 'home.html',
             controller: 'HomeCtrl'
@@ -30,4 +38,12 @@ app.controller('HomeCtrl', function ($scope, $http) {
     $http.get('foo.json').then(function(result) {
         return result.data;
     });
+});
+
+app.controller('ConfigureCtrl', function ($scope, $http) {
+
+});
+
+app.controller('ExportCtrl', function ($scope, $http) {
+
 });
