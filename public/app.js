@@ -36,6 +36,15 @@ app.config(function ($routeProvider) {
         });
 });
 
+app.run(function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeStart", function(event, current, previous, resolve) {
+        var user = JSON.parse(window.localStorage.getItem('user'));
+        if (!user && current.$$route.originalPath !== '/register') {
+            $location.path('/login');
+        }
+    });
+})
+
 app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
     $scope.isCurrentPath = function (path) {
         return $location.path() == path;
@@ -98,14 +107,16 @@ app.controller('AllCompCtrl', function ($scope, $http) {
     }
 
 });
-app.controller('LoginCtrl', function ($scope, $http, $location, $cookies) {
+app.controller('LoginCtrl', function ($scope, $http, $location) {
     $scope.login = function (username, password) {
         $http.post('http://comp.xcid.fr/users/login', {
             'username': username,
             'password': password
         })
             .success(function (data, status, headers, config) {
-                $cookies.user = data;
+                window.localStorage.setItem('user', JSON.stringify(data));
+                var merde = JSON.parse(window.localStorage.getItem('user'));
+                console.log(merde);
                 $location.path('/mycomp');
             })
             .error(function (data, status, headers, config) {
