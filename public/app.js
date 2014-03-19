@@ -6,9 +6,13 @@ var app = angular.module('CompetenceApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: 'home.html',
-            controller: 'HomeCtrl'
+        .when('/mycomp', {
+            templateUrl: 'mycomp.html',
+            controller: 'MyCompCtrl'
+        })
+        .when('/allcomp', {
+            templateUrl: 'allcomp.html',
+            controller: 'AllCompCtrl'
         })
         .when('/configure', {
             templateUrl: 'configure.html',
@@ -24,7 +28,42 @@ app.config(function ($routeProvider) {
         });
 });
 
-app.controller('HomeCtrl', function ($scope, $http) {
+app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
+    $scope.isCurrentPath = function (path) {
+        return $location.path() == path;
+    };
+}]);
+
+app.controller('MyCompCtrl', function ($scope, $http) {
+    //TODO : Charger les competences ratachée au user uniquement.
+
+    var competences = [];
+    $scope.competences = competences;
+    $http.get('http://comp.xcid.fr/competences')
+        .success(function (data) {
+            competences = data;
+            $scope.competences = competences;
+        })
+        .error(function () {
+
+        });
+
+    $scope.proceedToConfiguration = function () {
+        console.log('On va exporter ---> ');
+        console.log(competences);
+        for (var i = 0; i < competences.length; i++) {
+            var competence = competences[i];
+            if (competence.isActive) {
+                console.log(competence.name);
+            } else {
+                console.log('on export pas ' + competence.name);
+            }
+        }
+    }
+
+});
+
+app.controller('AllCompCtrl', function ($scope, $http) {
     var competences = [];
     $scope.competences = competences;
     $http.get('http://comp.xcid.fr/competences')
