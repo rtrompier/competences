@@ -2,7 +2,7 @@
  * Created by asgard on 18/03/14.
  */
 'use strict;'
-var app = angular.module('CompetenceApp', ['ngRoute']);
+var app = angular.module('CompetenceApp', ['ngRoute', 'ngCookies']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -21,6 +21,14 @@ app.config(function ($routeProvider) {
         .when('/export', {
             templateUrl: 'export.html',
             controller: 'ExportCtrl'
+        })
+        .when('/register', {
+            templateUrl: 'register.html',
+            controller: 'RegisterCtrl'
+        })
+        .when('/login', {
+          templateUrl: 'login.html',
+            controller: 'LoginCtrl'
         })
         .otherwise({
             templateUrl: 'home.html',
@@ -87,6 +95,42 @@ app.controller('AllCompCtrl', function ($scope, $http) {
             }
         }
     }
+
+});
+app.controller('LoginCtrl', function ($scope, $http, $location, $cookies) {
+    $scope.login = function (username, password) {
+        $http.post('http://comp.xcid.fr/users/login', {
+            'username': username,
+            'password': password
+        })
+            .success(function (data, status, headers, config) {
+                $cookies.user = data;
+                $location.path('/mycomp');
+            })
+            .error(function (data, status, headers, config) {
+                alert('Une erreur s\'est produite');
+            });
+    };
+});
+
+app.controller('RegisterCtrl', function ($scope, $http, $location) {
+
+    $scope.username = '';
+    $scope.password = '';
+    $scope.password2 = '';
+
+    $scope.register = function (username, password) {
+        $http.post('http://comp.xcid.fr/users', {
+            'username': username,
+            'password': password
+        })
+        .success(function (data, status, headers, config) {
+            $location.path('/login');
+        })
+        .error(function (data, status, headers, config) {
+           alert('Une erreur s\'est produite');
+        });
+    };
 
 });
 

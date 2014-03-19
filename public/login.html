@@ -1,0 +1,12 @@
+
+  <div class="container">
+  	<h1>Login</h1>
+  	<form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" ng-model="username"/>
+      <label for="password">Password:</label>
+      <input type="password" id="password" ng-model="password"/><br />
+      <button type="submit" class="btn btn-primary" ng-click="login(username, password)">Login</button>
+      <a href="#/register" class="btn btn-link">sign up</a>
+    </form>
+  </div>
