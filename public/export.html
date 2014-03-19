@@ -9,7 +9,94 @@
                 PORTEFEUILLES DE COMPETENCES    
             </div>
         </div>
-        <div class="page" ng-repeat="a in [1,2,3,4,5]">
+        <div class="page summary-page">
+            <h1 class="text-center">SOMMAIRE</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="categorie">Technique</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Debitis nesciunt optio natus at.</li>
+                        <li>Dolores alias deserunt neque veritatis.</li>
+                        <li>Modi commodi dicta dolores sapiente.</li>
+                        <li>Inventore cum eos accusamus qui?</li>
+                        <li>Harum, quidem consequatur tempore debitis.</li>
+                        <li>Ratione, expedita accusantium voluptatem at.</li>
+                        <li>Molestiae a ratione corporis ullam.</li>
+                        <li>Iste possimus voluptas voluptatem nostrum!</li>
+                        <li>Sed, nihil ab sit fugit!</li>
+                        <li>Omnis iste id incidunt ut.</li>
+                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
+                        <li>Magnam nesciunt itaque sed dolorum.</li>
+                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
+                        <li>Veritatis eos nam praesentium quidem?</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="categorie">Technique</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Debitis nesciunt optio natus at.</li>
+                        <li>Dolores alias deserunt neque veritatis.</li>
+                        <li>Modi commodi dicta dolores sapiente.</li>
+                        <li>Inventore cum eos accusamus qui?</li>
+                        <li>Harum, quidem consequatur tempore debitis.</li>
+                        <li>Ratione, expedita accusantium voluptatem at.</li>
+                        <li>Molestiae a ratione corporis ullam.</li>
+                        <li>Iste possimus voluptas voluptatem nostrum!</li>
+                        <li>Sed, nihil ab sit fugit!</li>
+                        <li>Omnis iste id incidunt ut.</li>
+                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
+                        <li>Magnam nesciunt itaque sed dolorum.</li>
+                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
+                        <li>Veritatis eos nam praesentium quidem?</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="categorie">Technique</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Debitis nesciunt optio natus at.</li>
+                        <li>Dolores alias deserunt neque veritatis.</li>
+                        <li>Modi commodi dicta dolores sapiente.</li>
+                        <li>Inventore cum eos accusamus qui?</li>
+                        <li>Harum, quidem consequatur tempore debitis.</li>
+                        <li>Ratione, expedita accusantium voluptatem at.</li>
+                        <li>Molestiae a ratione corporis ullam.</li>
+                        <li>Iste possimus voluptas voluptatem nostrum!</li>
+                        <li>Sed, nihil ab sit fugit!</li>
+                        <li>Omnis iste id incidunt ut.</li>
+                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
+                        <li>Magnam nesciunt itaque sed dolorum.</li>
+                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
+                        <li>Veritatis eos nam praesentium quidem?</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="categorie">Technique</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Debitis nesciunt optio natus at.</li>
+                        <li>Dolores alias deserunt neque veritatis.</li>
+                        <li>Modi commodi dicta dolores sapiente.</li>
+                        <li>Inventore cum eos accusamus qui?</li>
+                        <li>Harum, quidem consequatur tempore debitis.</li>
+                        <li>Ratione, expedita accusantium voluptatem at.</li>
+                        <li>Molestiae a ratione corporis ullam.</li>
+                        <li>Iste possimus voluptas voluptatem nostrum!</li>
+                        <li>Sed, nihil ab sit fugit!</li>
+                        <li>Omnis iste id incidunt ut.</li>
+                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
+                        <li>Magnam nesciunt itaque sed dolorum.</li>
+                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
+                        <li>Veritatis eos nam praesentium quidem?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page" ng-repeat="a in competences">
             <!--<div class="subpage">-->
                 <div class="header">
                     <img src="img/G4-logo.png" alt="G4 logo" class="logo">
@@ -85,6 +172,9 @@
                         </td>
                     </tr>
                 </table>
+                <div class="footer">
+                    <div class="pagination">{{$index + 1}}/{{competences.length}}</div>
+                </div>
             <!--</div>-->
         </div>  
     </div> 
