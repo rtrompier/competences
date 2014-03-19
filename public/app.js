@@ -42,8 +42,9 @@ app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
     };
 }]);
 
-app.controller('MyCompCtrl', function ($scope, $http) {
+app.controller('MyCompCtrl', function ($scope, $http, $cookies) {
     //TODO : Charger les competences ratachée au user uniquement.
+    $scope.cookies = $cookies.user;
 
     var competences = [];
     $scope.competences = competences;
