@@ -1,13 +1,29 @@
 {
 	"type": "Collection",
 	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"userid": {
+			"name": "userid",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "userid",
+			"order": 1
+		},
 		"competenceid": {
 			"name": "competenceid",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
 			"id": "competenceid",
-			"order": 0
+			"order": 2
 		},
 		"year": {
 			"name": "year",
@@ -15,7 +31,7 @@
 			"typeLabel": "string",
 			"required": true,
 			"id": "year",
-			"order": 1
+			"order": 3
 		},
 		"lieu": {
 			"name": "lieu",
@@ -23,7 +39,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "lieu",
-			"order": 2
+			"order": 4
 		},
 		"besoinentreprise": {
 			"name": "besoinentreprise",
@@ -31,7 +47,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "besoinentreprise",
-			"order": 3
+			"order": 5
 		},
 		"travaildemande": {
 			"name": "travaildemande",
@@ -39,7 +55,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "travaildemande",
-			"order": 4
+			"order": 6
 		},
 		"contraintes": {
 			"name": "contraintes",
@@ -47,7 +63,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "contraintes",
-			"order": 5
+			"order": 7
 		},
 		"chronologiquement": {
 			"name": "chronologiquement",
@@ -55,7 +71,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "chronologiquement",
-			"order": 6
+			"order": 8
 		},
 		"resultat": {
 			"name": "resultat",
@@ -63,7 +79,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "resultat",
-			"order": 7
+			"order": 9
 		},
 		"retour": {
 			"name": "retour",
@@ -71,7 +87,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "retour",
-			"order": 8
+			"order": 10
 		}
 	}
 }
