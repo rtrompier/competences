@@ -59,11 +59,7 @@ app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
     };
 }]);
 
-<<<<<<< HEAD
 app.controller('MyCompCtrl', function ($scope, $http, apiURL) {
-=======
-app.controller('MyCompCtrl', function ($scope, $http, $cookies) {
->>>>>>> FETCH_HEAD
     //TODO : Charger les competences ratachée au user uniquement.
     $scope.cookies = $cookies.user;
 
