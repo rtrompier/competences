@@ -9,20 +9,20 @@
 			"id": "name",
 			"order": 0
 		},
-		"userid": {
-			"name": "userid",
+		"userId": {
+			"name": "userId",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "userid",
+			"id": "userId",
 			"order": 1
 		},
-		"competenceid": {
-			"name": "competenceid",
+		"competenceId": {
+			"name": "competenceId",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "competenceid",
+			"id": "competenceId",
 			"order": 2
 		},
 		"year": {
@@ -41,20 +41,20 @@
 			"id": "lieu",
 			"order": 4
 		},
-		"besoinentreprise": {
-			"name": "besoinentreprise",
+		"besoinEntreprise": {
+			"name": "besoinEntreprise",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "besoinentreprise",
+			"id": "besoinEntreprise",
 			"order": 5
 		},
-		"travaildemande": {
-			"name": "travaildemande",
+		"travailDemande": {
+			"name": "travailDemande",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "travaildemande",
+			"id": "travailDemande",
 			"order": 6
 		},
 		"contraintes": {

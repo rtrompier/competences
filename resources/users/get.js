@@ -1,7 +1,2 @@
-if(query.nbsituations){
-    hide("username");
-    hide("id");
-    dpd.situations.get({}, function(situation) {
-        this.nbsituation = situation.length;
-    });
-}
+// Cancel si pas loggé
+cancelUnless(me, "You are not logged in", 401);
