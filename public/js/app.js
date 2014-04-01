@@ -3,13 +3,13 @@
  */
 'use strict;'
 
-var app = angular.module('CompetenceApp', ['ngRoute', 'ngCookies']);
+var app = angular.module('CompetenceApp', ['ngRoute', 'ngCookies' ,'ui.bootstrap']);
 
 app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
-        .when('/mycomp', {
-            templateUrl: 'partials/mycomp.html',
-            controller: 'MyCompCtrl'
+        .when('/mysituation', {
+            templateUrl: 'partials/mysituations.html',
+            controller: 'MySitCtrl'
         })
         .when('/allcomp', {
             templateUrl: 'partials/allcomp.html',
@@ -31,13 +31,17 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'partials/login.html',
             controller: 'LoginCtrl'
         })
-        .when('/editComp/:id', {
-            templateUrl: 'partials/edit_comp.html',
-            controller: 'EditCompCtrl'
+        .when('/editsituation/:id', {
+            templateUrl: 'partials/situation.html',
+            controller: 'EditSitCtrl'
+        })
+        .when('/newsituation', {
+            templateUrl: 'partials/situation.html',
+            controller: 'NewSitCtrl'
         })
         .otherwise({
-            templateUrl: 'partials/home.html',
-            controller: 'HomeCtrl'
+            templateUrl: 'partials/login.html',
+            controller: 'LoginCtrl'
         });
 
     $httpProvider.defaults.withCredentials = true;
@@ -52,5 +56,10 @@ app.run(function ($rootScope, $location) {
     });
 })
 
-app.constant('apiURL', 'http://comp.xcid.fr');
+app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
+    $scope.isCurrentPath = function (path) {
+        return $location.path() == path;
+    };
+}]);
 
+app.constant('apiURL', 'http://comp.xcid.fr');

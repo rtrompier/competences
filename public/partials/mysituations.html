@@ -1,7 +1,7 @@
 <div class="container">
 
     <pre>
-        {{ situations }}
+        {{situations}}
     </pre>
 
     <div class="table-responsive">
@@ -9,7 +9,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Which one?</th>
                 <th>#</th>
                 <th>Name</th>
                 <th>Lieu</th>
@@ -23,16 +22,18 @@
                 <td>
                     <input type="checkbox" ng-model="competence.isActive" ng-click="competence.isActive = !competence.isActive"/>
                 </td>
-                <td>{{situation.competence._id}}</td>
-                <td>{{situation.competence.name}}</td>
+                <td>{{situation.name}}</td>
                 <td>{{situation.lieu}}</td>
                 <td>{{situation.competence.categorie}}</td>
-                <td><a class="btn btn-info" href="#/editComp/{{situation.id}}">Edit</a></td>
+                <td>
+                    <a class="btn btn-info" href="#/editsituation/{{situation.id}}">Edit</a>
+                    <a class="btn btn-danger">Remove</a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
-
+    <td><a class="btn btn-info" href="#/newsituation">New Situation</a></td>
     <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration()">Submit</button>
 
 </div>
