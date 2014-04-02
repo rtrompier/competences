@@ -1,9 +1,5 @@
 <div class="container">
 
-    <pre>
-        {{situations}}
-    </pre>
-
     <div class="table-responsive">
         <input type="text" ng-model="search" class="form-control" placeholder="Rechercher une compétence"/>
         <table class="table table-striped">
@@ -27,7 +23,7 @@
                 <td>{{situation.competence.categorie}}</td>
                 <td>
                     <a class="btn btn-info" href="#/editsituation/{{situation.id}}">Edit</a>
-                    <a class="btn btn-danger">Remove</a>
+                    <a class="btn btn-danger" ng-click="deleteSituation($index)">Remove</a>
                 </td>
             </tr>
             </tbody>

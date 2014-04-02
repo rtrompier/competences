@@ -9,11 +9,11 @@ app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/mysituation', {
             templateUrl: 'partials/mysituations.html',
-            controller: 'MySitCtrl'
+            controller: 'MySituationsCtrl'
         })
         .when('/allcomp', {
-            templateUrl: 'partials/allcomp.html',
-            controller: 'AllCompCtrl'
+            templateUrl: 'partials/allcompetences.html',
+            controller: 'AllCompetencesCtrl'
         })
         .when('/configure', {
             templateUrl: 'partials/configure.html',
@@ -33,11 +33,15 @@ app.config(function ($routeProvider, $httpProvider) {
         })
         .when('/editsituation/:id', {
             templateUrl: 'partials/situation.html',
-            controller: 'EditSitCtrl'
+            controller: 'SituationCtrl'
         })
-        .when('/newsituation', {
+        .when('/newsituation/:competenceid', {
             templateUrl: 'partials/situation.html',
-            controller: 'NewSitCtrl'
+            controller: 'SituationCtrl'
+        })
+        .when('/viewcompetence/:id', {
+            templateUrl: 'partials/competence.html',
+            controller: 'CompetenceCrtl'
         })
         .otherwise({
             templateUrl: 'partials/login.html',

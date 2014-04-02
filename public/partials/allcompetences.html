@@ -1,0 +1,56 @@
+<div class="container">
+
+    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">{{msgNotification}}</div>
+    <hr>
+    <label for="Comp">Nouvelle competences</label>
+                
+                  <div class="form-group">
+                    <input type="text" ng-model="newCompetence.name" placeholder="Nom" typeahead="competence.name for competence in competences | filter:$viewValue" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" ng-model="newCompetence.categorie" placeholder="Categorie" typeahead="competence.categorie for competence in competences | filter:$viewValue" class="form-control">
+                  </div>
+                  <button type="submit" ng-click="createCompetence(newCompetence)" class="btn btn-default">Create</button>
+                
+    <hr>
+    <div class="table-responsive">
+        <input type="text" ng-model="search" class="form-control" placeholder="Rechercher une compétence"/>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Categorie</th>
+                <th># Situations</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="competence in competences | filter:search">
+                <td>
+                    <input type="checkbox" ng-model="competence.isActive" ng-click="competence.isActive = !competence.isActive"/>
+                </td>
+                <td ng-class="{editing : competence.editing.name}">
+                    <div class="view" ng-dblclick="competence.editing.name = true">{{competence.name}}</div>
+                    <input class="form-control input-sm edit" type="text" ng-model="competence.name" ng-blur="saveCompetence(competence)">
+                </td>
+                <td ng-class="{editing : competence.editing.categorie}">
+                    <div class="view" ng-dblclick="competence.editing.categorie = true">{{competence.categorie}}</div>
+                    <input class="form-control input-sm edit" type="text" ng-model="competence.categorie" ng-blur="saveCompetence(competence)">
+                </td>
+                <td>
+                    {{competence.nbSituations}}
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="#/viewcompetence/{{competence.id}}">View</a>
+                    <a class="btn btn-info btn-sm" href="#/newsituation/{{competence.id}}">Creer Situation</a>
+                    <a class="btn btn-danger btn-sm" ng-click="deleteCompetence($index)">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration()">Submit</button>
+
+</div>
