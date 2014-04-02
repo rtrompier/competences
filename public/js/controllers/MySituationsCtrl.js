@@ -1,8 +1,7 @@
 app.controller('MySituationsCtrl', function ($scope, $http, apiURL) {
 
     var user = JSON.parse(window.localStorage.getItem('user'));
-
-    $http.get(apiURL + '/situations?userId=' + user.id+"&mini=1")
+    $http.get(apiURL + '/situations?userId=' + user.uid+"&mini=1")
         .success(function (data) {
             $scope.situations = data;
         })
