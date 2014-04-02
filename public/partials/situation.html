@@ -1,113 +1,121 @@
 <div class="container">
+    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
+        {{msgNotification}}
+    </div>
 
-    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">{{msgNotification}}</div>
 
-   
-
-        <div class="row form-group">
-            <div class="col-xs-4">
-                <label for="year">Nom</label>
-                <input ng-model="situation.name" type="text" class="form-control" id="year" placeholder="Name">
-                <label>
-                    <input type="checkbox" ng-model="situation.complete"> Situation complète
-                </label>
-            </div>
-            <div class="col-xs-4">
-                <label for="lieu">Année</label>
-                <input ng-model="situation.year" type="text" class="form-control" id="year" placeholder="Annéee">
-            </div>
-            <div class="col-xs-4">
-                <label for="lieu">Lieu</label>
-                <input ng-model="situation.lieu" type="text" class="form-control" id="lieu" placeholder="Location">
-
-            </div>
+    <div class="row form-group">
+        <div class="col-xs-4">
+            <label for="year">Nom</label>
+            <input ng-model="situation.name" type="text" class="form-control" id="year" placeholder="Name">
+            <label>
+                <input type="checkbox" ng-model="situation.complete"> Situation complète
+            </label>
         </div>
-        <hr>
-             <div class="form-group">
-                <label for="Comp">Competence associée</label>
-                <select class="form-control" data-ng-model="situation.competenceId" data-ng-options="competence.id as competence.name group by competence.categorie for competence in competences">   
-                </select>
-                
-                <label for="Comp">Or new one :</label>
-                <form class="form-inline" role="form" ng-submit="newCompetence(competence)">
-                  <div class="form-group">
-                    <input type="text" ng-model="competence.name" placeholder="Nom" typeahead="competence.name for competence in competences | filter:$viewValue" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" ng-model="competence.categorie" placeholder="Categorie" typeahead="competence.categorie for competence in competences | filter:$viewValue" class="form-control">
-                  </div>
-                  <button type="submit" class="btn btn-default">Create</button>
-                </form>
+        <div class="col-xs-4">
+            <label for="lieu">Année</label>
+            <input ng-model="situation.year" type="text" class="form-control" id="year" placeholder="Annéee">
+        </div>
+        <div class="col-xs-4">
+            <label for="lieu">Lieu</label>
+            <input ng-model="situation.lieu" type="text" class="form-control" id="lieu" placeholder="Location">
+
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Competence associée</label>
+        <select class="form-control" data-ng-model="situation.competenceId"
+                data-ng-options="competence.id as competence.name group by competence.categorie for competence in competences">
+        </select>
+
+        <label>Or new one :</label>
+
+        <form class="form-inline" role="form" ng-submit="newCompetence(competence)">
+            <div class="form-group">
+                <input type="text" ng-model="competence.name" placeholder="Nom"
+                       typeahead="competence.name for competence in competences | filter:$viewValue"
+                       class="form-control">
             </div>
-        <hr>
-        <button class="btn btn-default" ng-click="isCollapsedDetails = !isCollapsedDetails">Voir Détails</button>
-        <button class="btn btn-default" ng-click="isCollapsedContrainte = !isCollapsedContrainte">Voir contraintes</button>
-        <button class="btn btn-default" ng-click="isCollapsedChrono = !isCollapsedChrono">Voir Chronologie</button>
-        <button class="btn btn-default" ng-click="isCollapsedResult = !isCollapsedResult">Voir Resultats</button>
-        <button type="submit" class="btn btn-default" ng-click="updateSituation(situation)">Enregistrer</button>
-        <hr>
-        <div collapse="isCollapsedDetails">
+            <div class="form-group">
+                <input type="text" ng-model="competence.categorie" placeholder="Categorie"
+                       typeahead="competence.categorie for competence in competences | filter:$viewValue"
+                       class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default">Create</button>
+        </form>
+    </div>
+    <hr>
+    <button class="btn btn-default" ng-click="isCollapsedDetails = !isCollapsedDetails">Voir Détails</button>
+    <button class="btn btn-default" ng-click="isCollapsedContrainte = !isCollapsedContrainte">Voir contraintes</button>
+    <button class="btn btn-default" ng-click="isCollapsedChrono = !isCollapsedChrono">Voir Chronologie</button>
+    <button class="btn btn-default" ng-click="isCollapsedResult = !isCollapsedResult">Voir Resultats</button>
+    <button type="submit" class="btn btn-default" ng-click="updateSituation(situation)">Enregistrer</button>
+    <hr>
+    <div collapse="isCollapsedDetails">
         <div class="form-group">
             <label for="besoin-entreprise">Besoin de l'entreprise</label>
-            <textarea ng-model="situation.besoinEntreprise" class="form-control" id="besoin-entreprise" placeholder="Besoin de l'entreprise..." >
+            <textarea ng-model="situation.besoinEntreprise" class="form-control" id="besoin-entreprise"
+                      placeholder="Besoin de l'entreprise...">
             </textarea>
         </div>
         <div class="form-group">
             <label for="travail-demande">Travail demandé</label>
-            <textarea ng-model="situation.travailDemande" class="form-control" id="travail-demande" placeholder="Travail demandé..." >
+            <textarea ng-model="situation.travailDemande" class="form-control" id="travail-demande"
+                      placeholder="Travail demandé...">
             </textarea>
         </div>
+    </div>
+    <div collapse="isCollapsedContrainte">
+        <div class="form-group">
+            <input type="text" ng-model="newContrainte" class="form-control" id="" placeholder="Nouvelle contraintes">
+            </input>
+            <button type="submit" ng-click="addContrainte()" class="btn btn-primary  btn-xs">Submit</button>
         </div>
-        <div collapse="isCollapsedContrainte">
-            <div class="form-group">
-                <input type="text" ng-model="newContrainte" class="form-control" id="" placeholder="Nouvelle contraintes" >
-                            </input>
-                <button type="submit" ng-click="addContrainte()" class="btn btn-primary  btn-xs">Submit</button>
+        <hr>
+        <div class="form-group">
+            <div ng-repeat="contrainte in situation.contraintes">
+                <label>Moyens - Contraintes {{$index+1}}:</label>
+                <input ng-model="contrainte.val" class="form-control" placeholder="">
+                </input>
+                <button class="btn btn-danger btn-xs" ng-click="removeContrainte($index)">Remove</button>
             </div>
-            <hr>
-            <div class="form-group">
-                <div ng-repeat="contrainte in situation.contraintes">
-                    <label for="contrainte">Moyens - Contraintes {{$index+1}}:</label>
-                    <input ng-model="contrainte.val" class="form-control"  placeholder="" >
-                    </input>
-                    <button class="btn btn-danger btn-xs" ng-click="removeContrainte($index)">Remove</button>
-                </div>
-            </div>
         </div>
-        <div collapse="isCollapsedChrono">
-        <div class="form-group" >
-            <input type="text" ng-model="newChrono" class="form-control" id="" placeholder="Nouveau Chrono" >
-                    </input>
-                <button type="submit" ng-click="addChrono()" class="btn btn-primary  btn-xs">Submit</button>
+    </div>
+    <div collapse="isCollapsedChrono">
+        <div class="form-group">
+            <input type="text" ng-model="newChrono" class="form-control" id="" placeholder="Nouveau Chrono">
+            </input>
+            <button type="submit" ng-click="addChrono()" class="btn btn-primary  btn-xs">Submit</button>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
             <div ng-repeat="chrono in situation.chronologiquement">
-                <label for="chronos">Chronologiquement {{$index+1}}:</label>
-                <input ng-model="chrono.val" class="form-control" placeholder="" >
+                <label>Chronologiquement {{$index+1}}:</label>
+                <input ng-model="chrono.val" class="form-control" placeholder="">
                 </input>
                 <button class="btn btn-danger btn-xs" ng-click="removeChrono($index)">Remove</button>
             </div>
         </div>
+    </div>
+    <div collapse="isCollapsedResult">
+        <div class="form-group">
+            <input type="text" ng-model="newResultat" class="form-control" id="" placeholder="Nouveau Resultat">
+            </input>
+            <button type="submit" ng-click="addResultat()" class="btn btn-primary  btn-xs">Submit</button>
         </div>
-        <div collapse="isCollapsedResult">
-            <div class="form-group" >
-                <input type="text" ng-model="newResultat" class="form-control" id="" placeholder="Nouveau Resultat" >
-                        </input>
-                <button type="submit" ng-click="addResultat()" class="btn btn-primary  btn-xs">Submit</button>
-            </div>
-            <div class="form-group">
-                <div ng-repeat="result in situation.resultat">
-                    <label for="result">Resultats {{$index+1}}:</label>
-                    <input ng-model="result.val" class="form-control" placeholder="" >
-                    </input>
-                    <button class="btn btn-danger btn-xs" ng-click="removeResultat($index)">Remove</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="retour">Retour</label>
-                <input ng-model="situation.retour" class="form-control" id="retour" placeholder="Retours..." >
+        <div class="form-group">
+            <div ng-repeat="result in situation.resultat">
+                <label>Resultats {{$index+1}}:</label>
+                <input ng-model="result.val" class="form-control" placeholder="">
                 </input>
-             </div>
+                <button class="btn btn-danger btn-xs" ng-click="removeResultat($index)">Remove</button>
+            </div>
         </div>
-        
+        <div class="form-group">
+            <label for="retour">Retour</label>
+            <input ng-model="situation.retour" class="form-control" id="retour" placeholder="Retours...">
+            </input>
+        </div>
+    </div>
+
 </div>

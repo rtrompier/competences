@@ -28,7 +28,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, apiURL) {
 
     $scope.logout = function () {
         $http.get(apiURL + '/users/logout')
-        .success(function (data) {
+        .success(function () {
             window.localStorage.clear();
             $scope.isLogin = false;
         });

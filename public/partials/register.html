@@ -1,14 +1,16 @@
-
-  <div class="container">
+<div class="container">
     <h1>Register</h1>
+
     <form name="form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" ng-model="username"/>
-      <label for="password">Password:</label>
-      <input type="password" id="password" ng-model="password"/>
-      <label for="confirm-password">Confirm Password:</label>
-      <input type="password" id="confirm-password" ng-model="password2" /><br />
-      <button ng-disabled="form.$pristine || ( password !== password2 )" type="submit" class="btn btn-primary" ng-click="register(username, password)">Sign up</button>
-      <a href="/" class="btn btn-link">home</a>
+        <label for="username">Username:</label>
+        <input type="text" id="username" ng-model="username"/>
+        <label for="password">Password:</label>
+        <input type="password" id="password" ng-model="password"/>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" ng-model="password2"/><br/>
+        <button ng-disabled="form.$pristine || ( password !== password2 )" type="submit" class="btn btn-primary"
+                ng-click="register(username, password)">Sign up
+        </button>
+        <a href="/" class="btn btn-link">home</a>
     </form>
-  </div>
+</div>

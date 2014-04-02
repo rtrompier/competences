@@ -8,7 +8,7 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
         contraintes : [],
         resultat : [],
         chronologiquement : []
-    }
+    };
 
     if($routeParams.id != undefined){
         $http.get(apiURL + '/situations/' + $routeParams.id)
@@ -25,7 +25,9 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
     $http.get(apiURL + '/competences?situations=1')
         .success(function (data) {
             $scope.competences = data;
-            $scope.situation.competenceId = $routeParams.competenceid
+            if($routeParams.competenceid != undefined){
+                $scope.situation.competenceId = $routeParams.competenceid;
+            }
         })
         .error(function () {
         }
@@ -37,32 +39,32 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
             val : $scope.newContrainte
         });
         $scope.newContrainte = "";
-    }
+    };
 
     $scope.removeContrainte = function(index){
         $scope.situation.contraintes.splice(index,1);
-    }
+    };
     $scope.addResultat = function(){
         $scope.situation.resultat.push({
             val : $scope.newResultat
         });
         $scope.newResultat = "";
-    }
+    };
 
     $scope.removeResultat = function(index){
         $scope.situation.resultat.splice(index,1);
-    }
+    };
 
     $scope.addChrono = function(){
         $scope.situation.chronologiquement.push({
             val : $scope.newChrono
         });
         $scope.newChrono = "";
-    }
+    };
 
     $scope.removeChrono = function(index){
         $scope.situation.chronologiquement.splice(index,1);
-    }
+    };
 
     $scope.updateSituation = function (situation) {
         if(situation.id == undefined){
@@ -82,19 +84,18 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
                     $scope.situation = data;
                     $scope.msgNotification = 'It has been saved';
                     $scope.ok = true;
-                    $situation = data;
                 })
                 .error(function (error) {
                     $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                     $scope.ok = false;
                 })
             }
-        }
+        };
 
     $scope.competence = {
         name : "",
         categorie : "",
-    }
+    };
 
     $scope.newCompetence = function(competence){
         $http.post(apiURL + '/competences', competence, {

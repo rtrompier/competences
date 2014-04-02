@@ -16,7 +16,8 @@
             <tr ng-repeat="situation in situations | filter:search">
                 {{situation}}
                 <td>
-                    <input type="checkbox" ng-model="competence.isActive" ng-click="competence.isActive = !competence.isActive"/>
+                    <input type="checkbox" ng-model="competence.isActive"
+                           ng-click="competence.isActive = !competence.isActive"/>
                 </td>
                 <td>{{situation.name}}</td>
                 <td>{{situation.lieu}}</td>

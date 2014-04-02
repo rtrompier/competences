@@ -1,16 +1,16 @@
 app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
     var competences = [];
     $scope.competences = competences;
-    
+
     $scope.newCompetences = {
-        name : "",
-        categorie : ""
-    }
-    
+        name: "",
+        categorie: ""
+    };
+
     $http.get(apiURL + '/competences?mini=1')
         .success(function (data) {
             $scope.competences = data;
-            $scope.competences.forEach(function(competence){
+            $scope.competences.forEach(function (competence) {
                 competence.editing = {};
                 competence.editing.name = false;
                 competence.editing.categorie = false;
@@ -18,15 +18,15 @@ app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
         })
         .error(function (error) {
             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-    });
+        });
 
-    
-    $scope.createCompetence = function(newCompetence){
+
+    $scope.createCompetence = function (newCompetence) {
         $http.post(apiURL + '/competences', newCompetence)
             .success(function (data) {
                 $scope.msgNotification = "Nouvelle competence : " + data.name + " créée";
                 $scope.ok = true;
-                
+
                 $scope.newCompetence.name = "";
                 $scope.newCompetence.categorie = "";
                 $scope.competences.push(data);
@@ -36,11 +36,11 @@ app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
             })
-    }
+    };
 
-    $scope.saveCompetence = function(competence){
-        $http.put(apiURL + '/competences/'+ competence.id, competence)
-            .success(function (data) {
+    $scope.saveCompetence = function (competence) {
+        $http.put(apiURL + '/competences/' + competence.id, competence)
+            .success(function () {
                 $scope.msgNotification = "Competence mise à jour";
                 $scope.ok = true;
                 // TODO Rediriger page precedente
@@ -48,23 +48,23 @@ app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
             .error(function (error) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
-            })
+            });
         competence.editing = false;
-    }
+    };
 
-    $scope.deleteCompetence = function(index){
-        $http.delete(apiURL + '/competences/'+$scope.competences[index]["id"])
-            .success(function (data) {
+    $scope.deleteCompetence = function (index) {
+        $http.delete(apiURL + '/competences/' + $scope.competences[index]["id"])
+            .success(function () {
                 $scope.msgNotification = "Competence supprimé";
                 $scope.ok = true;
-                $scope.competences.splice(index,1);
+                $scope.competences.splice(index, 1);
             })
             .error(function (error) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
             })
-    }
-    
+    };
+
     $scope.proceedToConfiguration = function () {
         console.log('On va exporter ---> ');
         console.log(competences);

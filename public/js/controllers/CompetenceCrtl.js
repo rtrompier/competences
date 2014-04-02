@@ -4,7 +4,7 @@ app.controller('CompetenceCrtl', function ($scope, $routeParams, $http, apiURL) 
 	        .success(function (data) {
 	            $scope.competence = data;
 	        })
-	        .error(function (data) {
+	        .error(function (error) {
 	             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
 	});
 	

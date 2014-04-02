@@ -1,11 +1,16 @@
 <div class="container">
 
-	<div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">{{msgNotification}}</div>
-	<h2>{{competence.name}}   <small>Categorie : {{competence.categorie}}</small></h2>
+    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
+        {{msgNotification}}
+    </div>
+    <h2>{{competence.name}}
+        <small>Categorie : {{competence.categorie}}</small>
+    </h2>
 
-	<h4> Nombre de situations présentes : {{competence.nbSituations}}</h4>
-	<h4> Nombre de situation que tu peux voir : {{competence.situations.length}}</h4>
-	<div class="table-responsive">
+    <h4> Nombre de situations présentes : {{competence.nbSituations}}</h4>
+    <h4> Nombre de situation que tu peux voir : {{competence.situations.length}}</h4>
+
+    <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -19,17 +24,20 @@
             <tr ng-repeat="situation in competence.situations" ng-class="{info : user.username == situation.userName}">
 
                 <td>
-                    <input type="checkbox" ng-model="competence.isActive" ng-click="competence.isActive = !competence.isActive"/>
+                    <input type="checkbox" ng-model="competence.isActive"
+                           ng-click="competence.isActive = !competence.isActive"/>
                 </td>
-                <td >
+                <td>
                     {{situation.name}}
                 </td>
                 <td>
                     {{ situation.userName}}
                 </td>
                 <td>
-                    <a class="btn btn-info" ng-click="copySituation(situation.id)" ng-if="user.username != situation.userName">Copy</a>
-                    <a class="btn btn-info" href="#/editsituation/{{situation.id}}" ng-if="user.username == situation.userName">Voir</a>
+                    <a class="btn btn-info" ng-click="copySituation(situation.id)"
+                       ng-if="user.username != situation.userName">Copy</a>
+                    <a class="btn btn-info" href="#/editsituation/{{situation.id}}"
+                       ng-if="user.username == situation.userName">Voir</a>
                 </td>
             </tr>
             </tbody>
