@@ -6,7 +6,9 @@ app.controller('LoginCtrl', function ($scope, $http, $location, apiURL) {
         .success(function (data) {
             if(data == ""){
                 $scope.isLogin = false;
+                window.localStorage.setItem('user', JSON.stringify(data));
             }else{
+                window.localStorage.clear();
                 $scope.isLogin = true;
             }
     });
@@ -27,6 +29,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, apiURL) {
     $scope.logout = function () {
         $http.get(apiURL + '/users/logout')
         .success(function (data) {
+            window.localStorage.clear();
             $scope.isLogin = false;
         });
     }
