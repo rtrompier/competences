@@ -16,6 +16,14 @@
 			"required": true,
 			"id": "categorie",
 			"order": 1
+		},
+		"nbSituations": {
+			"name": "nbSituations",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "nbSituations",
+			"order": 2
 		}
 	}
 }
