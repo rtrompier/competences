@@ -6,9 +6,8 @@ app.controller('LoginCtrl', function ($scope, $http, $location, apiURL) {
         .success(function (data) {
             if(data == ""){
                 $scope.isLogin = false;
-                window.localStorage.setItem('user', JSON.stringify(data));
-            }else{
                 window.localStorage.clear();
+            }else{
                 $scope.isLogin = true;
             }
     });
@@ -19,6 +18,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, apiURL) {
             'password': password
         })
             .success(function (data, status, headers, config) {
+                window.localStorage.setItem('user', JSON.stringify(data));
                 $location.path('/mycomp');    
             })
             .error(function (data, status, headers, config) {
