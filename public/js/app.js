@@ -88,7 +88,7 @@ app.run(function ($rootScope, $location) {
             $location.path('/login');
         }
     });
-})
+});
 
 app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
     $scope.isCurrentPath = function (path) {
