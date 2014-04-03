@@ -6,6 +6,7 @@ app.controller('CompetenceCrtl', function ($scope, $routeParams, $http, apiURL) 
 	        })
 	        .error(function (error) {
 	             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+	             $scope.ok = false;
 	});
 	
 	$http.get(apiURL + '/users/me')

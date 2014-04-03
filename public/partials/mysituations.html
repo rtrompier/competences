@@ -1,5 +1,8 @@
-<div class="container">
-
+<div ng-if="isLoading" class="loader"><img src="img/ajax-loader.gif"></div>
+<div ng-class="{'isLoading' : isLoading}" class="container">
+    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
+        {{msgNotification}}
+    </div>
     <div class="table-responsive">
         <input type="text" ng-model="search" class="form-control" placeholder="Rechercher une compétence"/>
         <table class="table table-striped">
@@ -16,8 +19,8 @@
             <tr ng-repeat="situation in situations | filter:search">
                 {{situation}}
                 <td>
-                    <input type="checkbox" ng-model="competence.isActive"
-                           ng-click="competence.isActive = !competence.isActive"/>
+                    <input type="checkbox" ng-model="situation.isActive"
+                           ng-click="situation.isActive = !situation.isActive"/>
                 </td>
                 <td>{{situation.name}}</td>
                 <td>{{situation.lieu}}</td>
@@ -31,6 +34,6 @@
         </table>
     </div>
     <td><a class="btn btn-info" href="#/newsituation">New Situation</a></td>
-    <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration()">Submit</button>
+    <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration(situations)">Submit</button>
 
 </div>

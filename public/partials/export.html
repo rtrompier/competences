@@ -1,4 +1,5 @@
 <div class="container">
+    <pre>{{situations}}</pre>
     <div ng-controller="ExportCtrl">
         <div class="page first-page">
             <div>
@@ -97,20 +98,19 @@
                 </div>
             </div>
         </div>
-        <div class="page" ng-repeat="a in competences">
+        <div class="page" ng-repeat="situation in situations">
             <!--<div class="subpage">-->
             <div class="header">
                 <img src="../img/G4-logo.png" alt="G4 logo" class="logo">
             </div>
-            <h1 class="text-center">Titre de la compétences {{$index + 1}}</h1>
+            <h1 class="text-center">{{situation.name}}</h1>
             <table class="table table-bordered">
                 <tr>
                     <td>
                         <h3>Besoin de l'entreprise :</h3>
 
                         <div class="contentTab">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem
-                            facilis itaque voluptatum accusantium laborum
+                            {{situation.besoinEntreprise}}
                         </div>
                     </td>
                 </tr>

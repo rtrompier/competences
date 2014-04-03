@@ -9,43 +9,73 @@ app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/mysituation', {
             templateUrl: 'partials/mysituations.html',
-            controller: 'MySituationsCtrl'
+            controller: 'MySituationsCtrl',
+            access: {
+                isFree: false
+            }
         })
         .when('/allcomp', {
             templateUrl: 'partials/allcompetences.html',
-            controller: 'AllCompetencesCtrl'
+            controller: 'AllCompetencesCtrl',
+            access: {
+                isFree: false
+            }
         })
         .when('/configure', {
             templateUrl: 'partials/configure.html',
-            controller: 'ConfigureCtrl'
+            controller: 'ConfigureCtrl',
+            access: {
+                isFree: false
+            }
         })
         .when('/export', {
             templateUrl: 'partials/export.html',
-            controller: 'ExportCtrl'
+            controller: 'ExportCtrl',
+            access: {
+                isFree: false
+            }
         })
         .when('/register', {
             templateUrl: 'partials/register.html',
-            controller: 'RegisterCtrl'
+            controller: 'RegisterCtrl',
+            access: {
+                isFree: true
+            }
         })
         .when('/login', {
             templateUrl: 'partials/login.html',
-            controller: 'LoginCtrl'
+            controller: 'LoginCtrl',
+            access: {
+                isFree: true
+            }
         })
         .when('/editsituation/:id', {
             templateUrl: 'partials/situation.html',
-            controller: 'SituationCtrl'
+            controller: 'SituationCtrl',
+            access: {
+                isFree: false
+            }
         })
-        .when('/newsituation/:competenceid', {
+        .when('/newsituation/:competenceid?', {
             templateUrl: 'partials/situation.html',
-            controller: 'SituationCtrl'
+            controller: 'SituationCtrl',
+            access: {
+                isFree: false
+            }
         })
         .when('/viewcompetence/:id', {
             templateUrl: 'partials/competence.html',
-            controller: 'CompetenceCrtl'
+            controller: 'CompetenceCrtl',
+            access: {
+                isFree: false
+            }
         })
         .otherwise({
-            templateUrl: 'partials/login.html',
-            controller: 'LoginCtrl'
+            templateUrl: 'partials/mysituations.html',
+            controller: 'MySituationsCtrl',
+            access: {
+                isFree: false
+            }
         });
 
     $httpProvider.defaults.withCredentials = true;
@@ -54,7 +84,7 @@ app.config(function ($routeProvider, $httpProvider) {
 app.run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeStart", function(event, current, previous, resolve) {
         var user = JSON.parse(window.localStorage.getItem('user'));
-        if (!user && current.$$route.originalPath !== '/register') {
+        if (!current.access.isFree && !user) {
             $location.path('/login');
         }
     });
@@ -67,3 +97,17 @@ app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
 }]);
 
 app.constant('apiURL', 'http://comp.xcid.fr');
+
+
+app.service('exportSituation', function() {
+    var situations = {};
+    return {
+        getSituations: function() {
+            return situations;
+        },
+        setSituations: function(value) {
+            situations = value
+        }
+    }
+});
+

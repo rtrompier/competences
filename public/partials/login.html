@@ -1,6 +1,10 @@
-<div class="container">
+<div ng-if="isLoading" class="loader"><img src="img/ajax-loader.gif"></div>
+<div ng-class="{'isLoading' : isLoading}" class="container">
+    
     <h1>Login</h1>
-
+    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
+        {{msgNotification}}
+    </div>
     <div ng-if="!isLogin">
 
         <form name="form">
@@ -15,7 +19,7 @@
         </form>
     </div>
     <div ng-if="isLogin">
-        <p>You are connected</p>
+        <p>You are connected as {{user}}</p>
         <br>
         <button class="btn btn-warning" ng-click="logout()">Logout</button>
     </div>

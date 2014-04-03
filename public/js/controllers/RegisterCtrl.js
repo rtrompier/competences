@@ -5,15 +5,18 @@ app.controller('RegisterCtrl', function ($scope, $http, $location) {
     $scope.password2 = '';
 
     $scope.register = function (username, password) {
+        $scope.isLoading = true;
         $http.post(apiURL + '/users', {
             'username': username,
             'password': password
         })
-            .success(function (data, status, headers, config) {
+            .success(function () {
                 $location.path('/login');
             })
-            .error(function (data, status, headers, config) {
-                alert('Une erreur s\'est produite');
+            .error(function (error) {
+                $scope.isLoading = false;
+                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $scope.ok = false;
             });
     };
 
