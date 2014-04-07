@@ -17,8 +17,8 @@ app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiU
         })
         .error(function (error) {
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
         });
     
 
@@ -40,8 +40,8 @@ app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiU
 
 
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
             });
     };
 

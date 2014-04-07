@@ -1,9 +1,5 @@
 <div class="container">
 
-    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
-        {{msgNotification}}
-    </div>
-    <hr>
     <label>Nouvelle competences</label>
 
     <div class="form-group">
@@ -24,7 +20,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
+
                 <th>Name</th>
                 <th>Categorie</th>
                 <th># Situations</th>
@@ -33,10 +29,6 @@
             </thead>
             <tbody>
             <tr ng-repeat="competence in competences | filter:search">
-                <td>
-                    <input type="checkbox" ng-model="competence.isActive"
-                           ng-click="competence.isActive = !competence.isActive"/>
-                </td>
                 <td ng-class="{editing : competence.editing.name}">
                     <div class="view" ng-dblclick="competence.editing.name = true">{{competence.name}}</div>
                     <input class="form-control input-sm edit" type="text" ng-model="competence.name"
@@ -59,7 +51,4 @@
             </tbody>
         </table>
     </div>
-
-    <button type="submit" class="btn btn-default" ng-click="proceedToConfiguration()">Submit</button>
-
 </div>

@@ -7,8 +7,8 @@ app.controller('CompetenceCrtl', function ($scope, $rootScope, $routeParams, $ht
 	            $rootScope.isLoading = false;
 	        })
 	        .error(function (error) {
-	             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-	             $scope.ok = false;
+	             $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+	             $rootScope.ok = false;
 	             $rootScope.isLoading = false;
 	});
 	
@@ -23,20 +23,20 @@ app.controller('CompetenceCrtl', function ($scope, $rootScope, $routeParams, $ht
 	            data.id = "";
 	            $http.post(apiURL + '/situations/', data)
                 .success(function (data) {
-                    $scope.msgNotification = 'It has been copied';
-                    $scope.ok = true;
+                    $rootScope.msgNotification = 'It has been copied';
+                    $rootScope.ok = true;
                     $scope.competence.situations.push(data);
                      $rootScope.isLoading = false;
                 })
                 .error(function (error) {
-                    $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                    $scope.ok = false;
+                    $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                    $rootScope.ok = false;
                     $rootScope.isLoading = false;
                 })
 	        })
 	        .error(function (error) {
-	            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-	            $scope.ok = false;
+	            $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+	            $rootScope.ok = false;
 	            $rootScope.isLoading = false;
 	        });
 	}

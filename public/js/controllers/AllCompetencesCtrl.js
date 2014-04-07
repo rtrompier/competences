@@ -6,7 +6,6 @@ app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL
         categorie: ""
     };
 
-    
     $http.get(apiURL + '/competences?mini=1')
         .success(function (data) {
             $scope.competences = data;
@@ -19,7 +18,8 @@ app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL
             
         })
         .error(function (error) {
-            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+            $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+            $rootScope.ok = false;
             $rootScope.isLoading = false;
         });
 
@@ -28,18 +28,18 @@ app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL
         $rootScope.isLoading = true;
         $http.post(apiURL + '/competences', newCompetence)
             .success(function (data) {
-                $scope.msgNotification = "Nouvelle competence : " + data.name + " créée";
-                $scope.ok = true;
-
                 $scope.newCompetence.name = "";
                 $scope.newCompetence.categorie = "";
                 $scope.competences.push(data);
                 $scope.situation.competenceId = data.id;
+
+                $rootScope.msgNotification = "Nouvelle competence : " + data.name + " créée";
+                $rootScope.ok = true;
                 $rootScope.isLoading = false;
             })
             .error(function (error) {
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
                 $rootScope.isLoading = false;
             })
     };
@@ -48,14 +48,14 @@ app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL
         $rootScope.isLoading = true;
         $http.put(apiURL + '/competences/' + competence.id, competence)
             .success(function () {
-                $scope.msgNotification = "Competence mise à jour";
-                $scope.ok = true;
+                $rootScope.msgNotification = "Competence mise à jour";
+                $rootScope.ok = true;
                 $rootScope.isLoading = false;
                 // TODO Rediriger page precedente
             })
             .error(function (error) {
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
                 $rootScope.isLoading = false;
             });
         competence.editing = false;
@@ -65,14 +65,14 @@ app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL
         $rootScope.isLoading = true;
         $http.delete(apiURL + '/competences/' + $scope.competences[index]["id"])
             .success(function () {
-                $scope.msgNotification = "Competence supprimé";
-                $scope.ok = true;
+                $rootScope.msgNotification = "Competence supprimé";
+                $rootScope.ok = true;
                 $rootScope.isLoading = false;
                 $scope.competences.splice(index, 1);
             })
             .error(function (error) {
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
                 $rootScope.isLoading = false;
             })
     };

@@ -1,7 +1,4 @@
 <div class="container">
-    <div ng-show="msgNotification" class="alert" ng-class="{'alert-success': ok, 'alert-danger': !ok}">
-        {{msgNotification}}
-    </div>
     <div class="table-responsive">
         <input type="text" ng-model="search" class="form-control" placeholder="Rechercher une compétence"/>
         <table class="table table-striped">
@@ -9,7 +6,8 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Lieu</th>
+                <th>Complète</th>
+                <th>Competence</th>
                 <th>Categorie</th>
                 <th>Actions</th>
             </tr>
@@ -22,7 +20,8 @@
                            ng-click="situation.isActive = !situation.isActive"/>
                 </td>
                 <td>{{situation.name}}</td>
-                <td>{{situation.lieu}}</td>
+                <td>{{situation.complete}}</td>
+                <td>{{situation.competence.name}}</td>
                 <td>{{situation.competence.categorie}}</td>
                 <td>
                     <a class="btn btn-info" href="#/editsituation/{{situation.id}}">Edit</a>

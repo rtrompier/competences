@@ -33,8 +33,8 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
             }
         })
         .error(function (error) {
-            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-            $scope.ok = false;
+            $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+            $rootScope.ok = false;
         }
     );
 
@@ -77,26 +77,26 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
 
             $scope.situation.$save(function(result){
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'It has been saved';
-                $scope.ok = true;
+                $rootScope.msgNotification = 'It has been saved';
+                $rootScope.ok = true;
 
             },function(error){
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
 
             });
 
         }else{
             $scope.situation.$update(function(result){
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'It has been saved';
-                $scope.ok = true;
+                $rootScope.msgNotification = 'It has been saved';
+                $rootScope.ok = true;
 
             },function(error){
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
 
             });
         }
@@ -113,14 +113,14 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
         })
             .success(function (data) {
                 $scope.competence = data;
-                $scope.msgNotification = "Nouvelle competence : " + data.name + " créée";
-                $scope.ok = true;
+                $rootScope.msgNotification = "Nouvelle competence : " + data.name + " créée";
+                $rootScope.ok = true;
                 $scope.competences.push(data);
                 $scope.situation.competenceId = data.id;
             })
             .error(function (error) {
-                $scope.msgNotification = error;
-                $scope.ok = false;
+                $rootScope.msgNotification = error;
+                $rootScope.ok = false;
             })
         }
 

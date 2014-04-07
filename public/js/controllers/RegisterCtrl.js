@@ -15,8 +15,8 @@ app.controller('RegisterCtrl', function ($scope, $rootScope, $http, $location) {
             })
             .error(function (error) {
                 $rootScope.isLoading = false;
-                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                $scope.ok = false;
+                $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $rootScope.ok = false;
             });
     };
 

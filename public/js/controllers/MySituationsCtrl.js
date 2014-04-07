@@ -17,8 +17,8 @@ app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $locatio
 
     }, function(error){
         $rootScope.isLoading = false;
-        $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-        $scope.ok = false;
+        $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+        $rootScope.ok = false;
     });
 
 
@@ -26,11 +26,11 @@ app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $locatio
         $scope.situations[index].$delete(function(response){
             $scope.situations.splice(index,1);
             $rootScope.isLoading = false;
-            $scope.ok = undefined;
+            $rootScope.ok = undefined;
         }, function(error){
             $rootScope.isLoading = false;
-            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-            $scope.ok = false;
+            $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+            $rootScope.ok = false;
         })
     };
 
