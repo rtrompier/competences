@@ -6,4 +6,3 @@ if(!query.situations && !query.mini){
     });
 }
 
-
