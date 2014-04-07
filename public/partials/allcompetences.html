@@ -51,9 +51,9 @@
                     {{competence.nbSituations}}
                 </td>
                 <td>
-                    <a class="btn btn-info btn-sm" href="#/viewcompetence/{{competence.id}}">View</a>
+                    <a ng-disabled="{{competence.nbSituations == 0}}" class="btn btn-info btn-sm" href="#/viewcompetence/{{competence.id}}">View</a>
                     <a class="btn btn-info btn-sm" href="#/newsituation/{{competence.id}}">Creer Situation</a>
-                    <a class="btn btn-danger btn-sm" ng-click="deleteCompetence($index)">Remove</a>
+                    <a ng-disabled="{{competence.nbSituations >= 1}}" class="btn btn-danger btn-sm" ng-click="deleteCompetence($index)">Remove</a>
                 </td>
             </tr>
             </tbody>
