@@ -1,37 +1,44 @@
-app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $location, apiURL,exportSituation) {
+app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $location, apiURL, exportSituation, Situations) {
     $rootScope.isLoading = true;
-    
+
     var user = JSON.parse(window.localStorage.getItem('user'));
-    if (user){
-        $http.get(apiURL + '/situations?userId=' + user.uid)
-        .success(function (data) {
-            $scope.situations = data;
-            $rootScope.isLoading = false;
-            $scope.ok = undefined;
-        })
-        .error(function (error) {
-            $rootScope.isLoading = false;
-            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-            $scope.ok = false;
-        });
-    }
-  
-    $scope.deleteSituation = function(index) {       
-        
-        $http.delete(apiURL + '/situations/'+$scope.situations[index]["id"])
-        .success(function () {
+
+    Situations.query({userId: user.uid},function(response){
+        $scope.situations = response;
+        $rootScope.isLoading = false;
+
+        $scope.$watch('situations', function(newNames, oldNames) {
+            newNames.forEach(function (values,key) {
+                if(newNames[key]["isActive"] != oldNames[key]["isActive"]){
+                      $scope.situations[key].$save();
+                }
+            })
+        },true);
+
+    }, function(error){
+        $rootScope.isLoading = false;
+        $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+        $scope.ok = false;
+    });
+
+
+    $scope.deleteSituation = function(index) {
+        $scope.situations[index].$delete(function(response){
             $scope.situations.splice(index,1);
             $rootScope.isLoading = false;
             $scope.ok = undefined;
-        })
-        .error(function () {
+        }, function(error){
             $rootScope.isLoading = false;
             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
             $scope.ok = false;
-        });
+        })
     };
 
-    $scope.proceedToConfiguration = function (situations) {
+
+
+
+    $scope.proceedToConfiguration = function () {
+
         exportSituations = [];
         for (var i = 0; i < situations.length; i++) {
             var situation = situations[i];

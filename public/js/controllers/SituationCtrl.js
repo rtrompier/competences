@@ -1,4 +1,4 @@
-app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $http, apiURL) {
+app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $http, apiURL, Situations) {
     $scope.isCollapsedContrainte = true;
     $scope.isCollapsedChrono = true;
     $scope.isCollapsedResult = true;
@@ -13,17 +13,13 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
     };
 
     if($routeParams.id != undefined){
-        $http.get(apiURL + '/situations/' + $routeParams.id)
-        .success(function (data) {
-            $scope.situation = data;
+
+        Situations.get({situationId: $routeParams.id}, function(response){
             $rootScope.isLoading = false;
-            console.log(data);
-        })
-        .error(function (error) {
-            $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-            $scope.ok = false;
-            $rootScope.isLoading = false;
+            $scope.situation = response;
+
         });
+
     }else{
         $rootScope.isLoading = false;
     }
@@ -78,33 +74,33 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
     $scope.updateSituation = function (situation) {
         $rootScope.isLoading = true;
         if(situation.id == undefined){
-            $http.post(apiURL + '/situations/', situation)
-                .success(function (data) {
-                    $rootScope.isLoading = false;
-                    $scope.situation = data;
-                    $scope.msgNotification = 'It has been saved';
-                    $scope.ok = true;
-                })
-                .error(function (error) {
-                    $rootScope.isLoading = false;
-                    $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                    $scope.ok = false;
-                })
+
+            $scope.situation.$save(function(result){
+                $rootScope.isLoading = false;
+                $scope.msgNotification = 'It has been saved';
+                $scope.ok = true;
+
+            },function(error){
+                $rootScope.isLoading = false;
+                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $scope.ok = false;
+
+            });
+
         }else{
-            $http.put(apiURL + '/situations/' + situation.id, situation)
-                .success(function (data) {
-                    $rootScope.isLoading = false;
-                    $scope.situation = data;
-                    $scope.msgNotification = 'It has been saved';
-                    $scope.ok = true;
-                })
-                .error(function (error) {
-                    $rootScope.isLoading = false;
-                    $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-                    $scope.ok = false;
-                })
-            }
-        };
+            $scope.situation.$update(function(result){
+                $rootScope.isLoading = false;
+                $scope.msgNotification = 'It has been saved';
+                $scope.ok = true;
+
+            },function(error){
+                $rootScope.isLoading = false;
+                $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
+                $scope.ok = false;
+
+            });
+        }
+    };
 
     $scope.competence = {
         name : "",
@@ -127,5 +123,5 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $htt
                 $scope.ok = false;
             })
         }
-       
+
 });

@@ -3,7 +3,7 @@
  */
 'use strict;'
 
-var app = angular.module('CompetenceApp', ['ngRoute', 'ngCookies' ,'ui.bootstrap']);
+var app = angular.module('CompetenceApp', ['ngRoute', 'ngCookies' ,'ui.bootstrap','ngResource']);
 
 app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
@@ -109,5 +109,12 @@ app.service('exportSituation', function() {
             situations = value
         }
     }
+});
+
+app.factory('Situations', function($resource, apiURL){
+    return $resource(apiURL+'/situations/:situationId', {situationId: '@id', userId : '@userId'},
+        {
+            'update': { method:'PUT' }
+        });
 });
 
