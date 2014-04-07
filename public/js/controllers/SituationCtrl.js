@@ -1,9 +1,9 @@
-app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
+app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, $http, apiURL) {
     $scope.isCollapsedContrainte = true;
     $scope.isCollapsedChrono = true;
     $scope.isCollapsedResult = true;
     $scope.isCollapsedDetails = true;
-    $scope.isLoading = true;
+    $rootScope.isLoading = true;
 
 
     $scope.situation = {
@@ -16,15 +16,16 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
         $http.get(apiURL + '/situations/' + $routeParams.id)
         .success(function (data) {
             $scope.situation = data;
-            $scope.isLoading = false;
+            $rootScope.isLoading = false;
+            console.log(data);
         })
         .error(function (error) {
             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
             $scope.ok = false;
-            $scope.isLoading = false;
+            $rootScope.isLoading = false;
         });
     }else{
-        $scope.isLoading = false;
+        $rootScope.isLoading = false;
     }
     
 
@@ -75,30 +76,30 @@ app.controller('SituationCtrl', function ($scope, $routeParams, $http, apiURL) {
     };
 
     $scope.updateSituation = function (situation) {
-        $scope.isLoading = true;
+        $rootScope.isLoading = true;
         if(situation.id == undefined){
             $http.post(apiURL + '/situations/', situation)
                 .success(function (data) {
-                    $scope.isLoading = false;
+                    $rootScope.isLoading = false;
                     $scope.situation = data;
                     $scope.msgNotification = 'It has been saved';
                     $scope.ok = true;
                 })
                 .error(function (error) {
-                    $scope.isLoading = false;
+                    $rootScope.isLoading = false;
                     $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                     $scope.ok = false;
                 })
         }else{
             $http.put(apiURL + '/situations/' + situation.id, situation)
                 .success(function (data) {
-                    $scope.isLoading = false;
+                    $rootScope.isLoading = false;
                     $scope.situation = data;
                     $scope.msgNotification = 'It has been saved';
                     $scope.ok = true;
                 })
                 .error(function (error) {
-                    $scope.isLoading = false;
+                    $rootScope.isLoading = false;
                     $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                     $scope.ok = false;
                 })

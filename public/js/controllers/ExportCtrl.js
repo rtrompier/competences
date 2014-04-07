@@ -1,5 +1,13 @@
-app.controller('ExportCtrl', function ($scope, $http,exportSituation) {
+app.controller('ExportCtrl', function ($scope, $rootScope, $http, exportSituation) {
+    $scope.situations = {};
     $scope.situations = exportSituation.getSituations();
     
-    $scope.competences = [1,2,3,4,5];
+    var competences = [];
+
+    $scope.situations.forEach(function (situation) {
+                competences.push(situation.competence);
+            });
+
+   	$scope.sommaire = _.groupBy(competences, "categorie");
+   
 });

@@ -1,5 +1,5 @@
-app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
-    $scope.isLoading = true;
+app.controller('AllCompetencesCtrl', function ($scope, $rootScope, $http, apiURL) {
+    $rootScope.isLoading = true;
 
     $scope.newCompetences = {
         name: "",
@@ -14,17 +14,18 @@ app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
                 competence.editing = {};
                 competence.editing.name = false;
                 competence.editing.categorie = false;
-            })
-            $scope.isLoading = false;
+            });
+            $rootScope.isLoading = false;
+            
         })
         .error(function (error) {
             $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
-            $scope.isLoading = false;
+            $rootScope.isLoading = false;
         });
 
 
     $scope.createCompetence = function (newCompetence) {
-        $scope.isLoading = true;
+        $rootScope.isLoading = true;
         $http.post(apiURL + '/competences', newCompetence)
             .success(function (data) {
                 $scope.msgNotification = "Nouvelle competence : " + data.name + " créée";
@@ -34,45 +35,45 @@ app.controller('AllCompetencesCtrl', function ($scope, $http, apiURL) {
                 $scope.newCompetence.categorie = "";
                 $scope.competences.push(data);
                 $scope.situation.competenceId = data.id;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
             })
             .error(function (error) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
             })
     };
 
     $scope.saveCompetence = function (competence) {
-        $scope.isLoading = true;
+        $rootScope.isLoading = true;
         $http.put(apiURL + '/competences/' + competence.id, competence)
             .success(function () {
                 $scope.msgNotification = "Competence mise à jour";
                 $scope.ok = true;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
                 // TODO Rediriger page precedente
             })
             .error(function (error) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
             });
         competence.editing = false;
     };
 
     $scope.deleteCompetence = function (index) {
-        $scope.isLoading = true;
+        $rootScope.isLoading = true;
         $http.delete(apiURL + '/competences/' + $scope.competences[index]["id"])
             .success(function () {
                 $scope.msgNotification = "Competence supprimé";
                 $scope.ok = true;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
                 $scope.competences.splice(index, 1);
             })
             .error(function (error) {
                 $scope.msgNotification = 'An error has occured' + JSON.stringify(error);
                 $scope.ok = false;
-                $scope.isLoading = false;
+                $rootScope.isLoading = false;
             })
     };
 

@@ -1,5 +1,4 @@
 <div class="container">
-    <pre>{{situations}}</pre>
     <div ng-controller="ExportCtrl">
         <div class="page first-page">
             <div>
@@ -14,86 +13,10 @@
             <h1 class="text-center">SOMMAIRE</h1>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="categorie">Technique</div>
+                <div ng-repeat="(categorie, competences) in sommaire" class="col-md-6">
+                    <div class="categories">{{categorie}}</div>
                     <ul>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Debitis nesciunt optio natus at.</li>
-                        <li>Dolores alias deserunt neque veritatis.</li>
-                        <li>Modi commodi dicta dolores sapiente.</li>
-                        <li>Inventore cum eos accusamus qui?</li>
-                        <li>Harum, quidem consequatur tempore debitis.</li>
-                        <li>Ratione, expedita accusantium voluptatem at.</li>
-                        <li>Molestiae a ratione corporis ullam.</li>
-                        <li>Iste possimus voluptas voluptatem nostrum!</li>
-                        <li>Sed, nihil ab sit fugit!</li>
-                        <li>Omnis iste id incidunt ut.</li>
-                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
-                        <li>Magnam nesciunt itaque sed dolorum.</li>
-                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
-                        <li>Veritatis eos nam praesentium quidem?</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <div class="categorie">Technique</div>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Debitis nesciunt optio natus at.</li>
-                        <li>Dolores alias deserunt neque veritatis.</li>
-                        <li>Modi commodi dicta dolores sapiente.</li>
-                        <li>Inventore cum eos accusamus qui?</li>
-                        <li>Harum, quidem consequatur tempore debitis.</li>
-                        <li>Ratione, expedita accusantium voluptatem at.</li>
-                        <li>Molestiae a ratione corporis ullam.</li>
-                        <li>Iste possimus voluptas voluptatem nostrum!</li>
-                        <li>Sed, nihil ab sit fugit!</li>
-                        <li>Omnis iste id incidunt ut.</li>
-                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
-                        <li>Magnam nesciunt itaque sed dolorum.</li>
-                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
-                        <li>Veritatis eos nam praesentium quidem?</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="categorie">Technique</div>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Debitis nesciunt optio natus at.</li>
-                        <li>Dolores alias deserunt neque veritatis.</li>
-                        <li>Modi commodi dicta dolores sapiente.</li>
-                        <li>Inventore cum eos accusamus qui?</li>
-                        <li>Harum, quidem consequatur tempore debitis.</li>
-                        <li>Ratione, expedita accusantium voluptatem at.</li>
-                        <li>Molestiae a ratione corporis ullam.</li>
-                        <li>Iste possimus voluptas voluptatem nostrum!</li>
-                        <li>Sed, nihil ab sit fugit!</li>
-                        <li>Omnis iste id incidunt ut.</li>
-                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
-                        <li>Magnam nesciunt itaque sed dolorum.</li>
-                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
-                        <li>Veritatis eos nam praesentium quidem?</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <div class="categorie">Technique</div>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Debitis nesciunt optio natus at.</li>
-                        <li>Dolores alias deserunt neque veritatis.</li>
-                        <li>Modi commodi dicta dolores sapiente.</li>
-                        <li>Inventore cum eos accusamus qui?</li>
-                        <li>Harum, quidem consequatur tempore debitis.</li>
-                        <li>Ratione, expedita accusantium voluptatem at.</li>
-                        <li>Molestiae a ratione corporis ullam.</li>
-                        <li>Iste possimus voluptas voluptatem nostrum!</li>
-                        <li>Sed, nihil ab sit fugit!</li>
-                        <li>Omnis iste id incidunt ut.</li>
-                        <li>Nulla consequuntur ipsa fuga distinctio.</li>
-                        <li>Magnam nesciunt itaque sed dolorum.</li>
-                        <li>Necessitatibus quis ipsum molestiae repudiandae.</li>
-                        <li>Veritatis eos nam praesentium quidem?</li>
+                        <li ng-repeat="competence in competences">{{competence.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -101,7 +24,7 @@
         <div class="page" ng-repeat="situation in situations">
             <!--<div class="subpage">-->
             <div class="header">
-                <img src="../img/G4-logo.png" alt="G4 logo" class="logo">
+                <img src="img/G4-logo.png" alt="G4 logo" class="logo">
             </div>
             <h1 class="text-center">{{situation.name}}</h1>
             <table class="table table-bordered">
@@ -118,13 +41,8 @@
                     <td>
                         <h3>Travail que globalement on m'as demandé :</h3>
 
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
+                        <div class="contentTab">
+                            {{situation.travailDemande}}
                         </div>
                     </td>
                 </tr>
@@ -134,10 +52,7 @@
 
                         <div class="contentList">
                             <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
+                                <li ng-repeat="contrainte in situation.contraintes">{{contrainte.val}}</li>
                             </ul>
                         </div>
                     </td>
@@ -148,10 +63,7 @@
 
                         <div class="contentList">
                             <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
+                                <li ng-repeat="chrono in situation.chronologiquement">{{chrono.val}}</li>
                             </ul>
                         </div>
                     </td>
@@ -160,9 +72,10 @@
                     <td>
                         <h3>Résultat obtenu :</h3>
 
-                        <div class="contentTab">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, cupiditate ullam quidem
-                            facilis itaque voluptatum accusantium laborum
+                         <div class="contentList">
+                            <ul>
+                                <li ng-repeat="result in situation.resultat">{{result.val}}</li>
+                            </ul>
                         </div>
                     </td>
                 </tr>
@@ -170,13 +83,8 @@
                     <td>
                         <h3>Ce que les autres ont dit de mes résultats :</h3>
 
-                        <div class="contentList">
-                            <ul>
-                                <li>list 1</li>
-                                <li>list 2</li>
-                                <li>list 3</li>
-                                <li>list 4</li>
-                            </ul>
+                        <div class="contentTab">
+                            {{situation.retour}}
                         </div>
                     </td>
                 </tr>
