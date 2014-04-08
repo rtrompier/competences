@@ -32,12 +32,12 @@
                 <td ng-class="{editing : competence.editing.name}">
                     <div class="view" ng-dblclick="competence.editing.name = true">{{competence.name}}</div>
                     <input class="form-control input-sm edit" type="text" ng-model="competence.name"
-                           ng-blur="saveCompetence(competence)">
+                           ng-blur="saveCompetence($index)">
                 </td>
                 <td ng-class="{editing : competence.editing.categorie}">
                     <div class="view" ng-dblclick="competence.editing.categorie = true">{{competence.categorie}}</div>
                     <input class="form-control input-sm edit" type="text" ng-model="competence.categorie"
-                           ng-blur="saveCompetence(competence)">
+                           ng-blur="saveCompetence($index)">
                 </td>
                 <td>
                     {{competence.nbSituations}}

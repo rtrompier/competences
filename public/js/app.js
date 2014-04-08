@@ -56,6 +56,13 @@ app.config(function ($routeProvider, $httpProvider) {
                 isFree: false
             }
         })
+        .when('/viewsituation/:id', {
+            templateUrl: 'partials/viewsituation.html',
+            controller: 'SituationCtrl',
+            access: {
+                isFree: false
+            }
+        })
         .when('/newsituation/:competenceid?', {
             templateUrl: 'partials/situation.html',
             controller: 'SituationCtrl',
@@ -97,26 +104,5 @@ app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
 }]);
 
 app.constant('apiURL', 'http://comp.xcid.fr');
-
-
-app.service('exportSituation', function() {
-    var situations = {};
-    return {
-        getSituations: function() {
-            return situations;
-        },
-        setSituations: function(value) {
-            situations = value
-        }
-    }
-});
-
-app.factory('Situations', function($resource, apiURL){
-    return $resource(apiURL+'/situations/:situationId', {situationId: '@id', userId : '@userId'},
-        {
-            'update': { method:'PUT' }
-        });
-});
-
 
 

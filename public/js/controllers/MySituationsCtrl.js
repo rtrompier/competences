@@ -1,9 +1,9 @@
-app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $location, apiURL, exportSituation, Situations) {
+app.controller('MySituationsCtrl', function ($scope, $rootScope, $location, Situation) {
     $rootScope.isLoading = true;
 
     var user = JSON.parse(window.localStorage.getItem('user'));
 
-    Situations.query({userId: user.uid},function(response){
+    Situation.query({userId: user.uid},function(response){
         $scope.situations = response;
         $rootScope.isLoading = false;
 
@@ -33,21 +33,4 @@ app.controller('MySituationsCtrl', function ($scope, $rootScope, $http, $locatio
             $rootScope.ok = false;
         })
     };
-
-
-
-
-    $scope.proceedToConfiguration = function () {
-
-        exportSituations = [];
-        for (var i = 0; i < situations.length; i++) {
-            var situation = situations[i];
-            if (situation.isActive) {
-                exportSituations.push(situation);
-            }
-        }
-        exportSituation.setSituations(exportSituations);
-        $location.path('/export');  
-    }
-
 });

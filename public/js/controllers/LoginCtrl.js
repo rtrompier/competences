@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiURL) {
+app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiURL,User) {
 
     $scope.isLogin = false;
     $rootScope.isLoading = true;
@@ -24,6 +24,10 @@ app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiU
 
     $scope.login = function (username, password) {
         $rootScope.isLoading = true;
+        
+        User.login(username,password);
+
+
         $http.post(apiURL + '/users/login', {
             'username': username,
             'password': password
@@ -54,4 +58,6 @@ app.controller('LoginCtrl', function ($scope, $rootScope, $http, $location, apiU
             $scope.isLogin = false;
         });
     }
+
+
 });

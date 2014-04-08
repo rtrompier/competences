@@ -30,10 +30,12 @@
                     {{ situation.userName}}
                 </td>
                 <td>
+                    <a class="btn btn-success" href="#/viewsituation/{{situation.id}}">Voir</a>
                     <a class="btn btn-info" ng-click="copySituation(situation.id)"
                        ng-if="user.username != situation.userName">Copy</a>
+                    
                     <a class="btn btn-info" href="#/editsituation/{{situation.id}}"
-                       ng-if="user.username == situation.userName">Voir</a>
+                       ng-if="user.username == situation.userName">Edit</a>
                 </td>
             </tr>
             </tbody>

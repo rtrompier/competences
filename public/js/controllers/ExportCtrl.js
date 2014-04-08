@@ -1,13 +1,23 @@
-app.controller('ExportCtrl', function ($scope, $rootScope, $http, exportSituation) {
-    $scope.situations = {};
-    $scope.situations = exportSituation.getSituations();
+app.controller('ExportCtrl', function ($scope, $rootScope, $http, Situation) {
     
-    var competences = [];
+	$rootScope.isLoading = true;
 
-    $scope.situations.forEach(function (situation) {
+    var user = JSON.parse(window.localStorage.getItem('user'));
+
+    Situation.query({userId: user.uid, isActive : true},function(response){
+        $scope.situations = response;
+        $rootScope.isLoading = false;
+        var competences = [];
+        $scope.situations.forEach(function (situation) {
                 competences.push(situation.competence);
             });
+        $scope.sommaire = _.groupBy(competences, "categorie");
 
-   	$scope.sommaire = _.groupBy(competences, "categorie");
+    }, function(error){
+        $rootScope.isLoading = false;
+        $rootScope.msgNotification = 'An error has occured' + JSON.stringify(error);
+        $rootScope.ok = false;
+    });
+
    
 });
