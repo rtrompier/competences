@@ -21,13 +21,6 @@ app.config(function ($routeProvider, $httpProvider) {
                 isFree: false
             }
         })
-        .when('/configure', {
-            templateUrl: 'partials/configure.html',
-            controller: 'ConfigureCtrl',
-            access: {
-                isFree: false
-            }
-        })
         .when('/export', {
             templateUrl: 'partials/export.html',
             controller: 'ExportCtrl',
@@ -88,13 +81,12 @@ app.config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 });
 
-app.run(function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeStart", function(event, current, previous, resolve) {
-        var user = JSON.parse(window.localStorage.getItem('user'));
-        if (!current.access.isFree && !user) {
-            $location.path('/login');
-        }
-    });
+app.run(function ($rootScope, $location, User) {
+        $rootScope.$on("$routeChangeStart", function(event, current, previous, resolve) {
+            if (!current.access.isFree && !User.getUser().isLogged) {
+                $location.path('/login');
+            }
+        });
 });
 
 app.controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {

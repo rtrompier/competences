@@ -1,9 +1,7 @@
-app.controller('MySituationsCtrl', function ($scope, $rootScope, $location, Situation) {
+app.controller('MySituationsCtrl', function ($scope, $rootScope, $location, Situation, User) {
     $rootScope.isLoading = true;
 
-    var user = JSON.parse(window.localStorage.getItem('user'));
-
-    Situation.query({userId: user.uid},function(response){
+    Situation.query({userId: User.getUser().id},function(response){
         $scope.situations = response;
         $rootScope.isLoading = false;
 

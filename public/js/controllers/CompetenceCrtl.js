@@ -1,4 +1,4 @@
-app.controller('CompetenceCrtl', function ($scope, $rootScope, $routeParams, Competence, Situation) {
+app.controller('CompetenceCrtl', function ($scope, $rootScope, $routeParams, Competence, Situation, User) {
 	$rootScope.isLoading = true;
 
 	Competence.get({competenceId: $routeParams.id}, function(response){
@@ -10,7 +10,7 @@ app.controller('CompetenceCrtl', function ($scope, $rootScope, $routeParams, Com
 	        $rootScope.isLoading = false;
         });
 
-	$scope.user = JSON.parse(window.localStorage.getItem('user'));                  
+	$scope.user = User.getUser();                 
 
 	$scope.copySituation = function(id){
 		

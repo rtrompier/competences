@@ -1,10 +1,8 @@
-app.controller('ExportCtrl', function ($scope, $rootScope, $http, Situation) {
+app.controller('ExportCtrl', function ($scope, $rootScope, $http, Situation, User) {
     
 	$rootScope.isLoading = true;
 
-    var user = JSON.parse(window.localStorage.getItem('user'));
-
-    Situation.query({userId: user.uid, isActive : true},function(response){
+    Situation.query({userId: User.getUser().id, isActive : true},function(response){
         $scope.situations = response;
         $rootScope.isLoading = false;
         var competences = [];

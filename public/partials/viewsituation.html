@@ -1,0 +1,72 @@
+        <div class="page">
+            <!--<div class="subpage">-->
+            <div class="header">
+                <img src="img/G4-logo.png" alt="G4 logo" class="logo">
+            </div>
+            <a class="btn btn-info" href="#/editsituation/{{situation.id}}"
+                       ng-if="user.username == situation.userName">Edit</a>
+            <h1 class="text-center">{{situation.name}}</h1>
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        <h3>Besoin de l'entreprise :</h3>
+
+                        <div class="contentTab">
+                            {{situation.besoinEntreprise}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Travail que globalement on m'as demandé :</h3>
+
+                        <div class="contentTab">
+                            {{situation.travailDemande}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Moyens et contraintes :</h3>
+
+                        <div class="contentList">
+                            <ul>
+                                <li ng-repeat="contrainte in situation.contraintes">{{contrainte.val}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Chronologiquement j’ai dû :</h3>
+
+                        <div class="contentList">
+                            <ul>
+                                <li ng-repeat="chrono in situation.chronologiquement">{{chrono.val}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Résultat obtenu :</h3>
+
+                         <div class="contentList">
+                            <ul>
+                                <li ng-repeat="result in situation.resultat">{{result.val}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Ce que les autres ont dit de mes résultats :</h3>
+
+                        <div class="contentTab">
+                            {{situation.retour}}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--</div>-->
+        </div>

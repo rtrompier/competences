@@ -4,7 +4,7 @@ app.controller('SituationCtrl', function ($scope, $rootScope, $routeParams, Situ
     $scope.isCollapsedResult = true;
     $scope.isCollapsedDetails = true;
     $rootScope.isLoading = true;
-        $scope.user = JSON.parse(window.localStorage.getItem('user')); 
+    
 
     $scope.situation = {
         contraintes : [],
